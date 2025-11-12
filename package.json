@@ -1,6 +1,6 @@
 {
   "name": "leaflet-amap-layer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight plugin for integrating AMap (Gaode Maps) into Leaflet-based web map applications",
   "main": "dist/leaflet-amap-layer.js",
   "module": "dist/leaflet-amap-layer.esm.js",

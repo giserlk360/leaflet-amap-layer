@@ -44,6 +44,7 @@ npm install leaflet@^1.9.4 @amap/amap-jsapi-loader@^1.0.1
 
 ```javascript
 import L from 'leaflet';
+import "leaflet/dist/leaflet.css";
 import { createAmapLayer } from 'leaflet-amap-layer';
 
 // 创建 Leaflet 地图
