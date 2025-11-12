@@ -1,0 +1,49 @@
+# 源代码
+src/
+*.ts
+
+# 配置文件
+rollup.config.js
+tsconfig.json
+
+# 开发依赖文件
+.gitignore
+.git/
+
+# 示例和文档
+example.html
+USAGE.md
+
+# 测试文件
+test/
+tests/
+**/*.test.js
+**/*.spec.js
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 依赖目录
+node_modules/
+
+# 构建缓存
+.cache/
+.temp/
+
+# 其他
+.env
+.env.local
+.env.*.local

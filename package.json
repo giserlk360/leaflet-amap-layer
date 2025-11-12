@@ -1,0 +1,46 @@
+{
+  "name": "leaflet-amap-layer",
+  "version": "1.0.0",
+  "description": "A lightweight plugin for integrating AMap (Gaode Maps) into Leaflet-based web map applications",
+  "main": "dist/leaflet-amap-layer.js",
+  "module": "dist/leaflet-amap-layer.esm.js",
+  "types": "dist/leaflet-amap-layer.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "leaflet",
+    "amap",
+    "gaode",
+    "map",
+    "plugin"
+  ],
+  "author": "giserlk",
+  "license": "MIT",
+  "homepage": "https://github.com/giserlk360/leaflet-amap-layer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giserlk360/leaflet-amap-layer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/giserlk360/leaflet-amap-layer/issues"
+  },
+  "peerDependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "leaflet": "^1.9.4",
+    "rollup": "^4.12.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-terser": "^0.4.4"
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet AMap Layer 示例</title>
+
+    <!-- 引入 Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .controls {
+            padding: 10px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .control-group {
+            margin: 5px 0;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        button {
+            margin: 2px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label>地图样式:</label>
+            <select id="mapStyle">
+                <option value="whitesmoke">远山黛</option>
+                <option value="normal">标准</option>
+                <option value="dark">幻影黑</option>
+                <option value="light">月光银</option>
+                <option value="fresh">草色青</option>
+                <option value="grey">雅士灰</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <button id="toggleVisible">显示/隐藏</button>
+        </div>
+        <div class="control-group">
+            <small>注意：请将 YOUR_AMAP_API_KEY 替换为您的有效高德地图 API Key</small>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- 引入依赖脚本 -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@amap/amap-jsapi-loader@1.0.1/dist/index.js"></script>
+
+    <!-- 引入打包后的 UMD 文件 -->
+    <script src="dist/leaflet-amap-layer.umd.js"></script>
+
+    <script>
+        // 初始化 Leaflet 地图
+        const map = L.map('map').setView([39.9042, 116.4074], 11);
+
+
+        // 配置 AMap Layer
+        const amapLayer = new LeafletAmapLayer.AmapLayer({
+            apiKey: '', // 替换为您的 API Key
+            securityConfig: {
+                securityJsCode: '' // 可选：如果您有安全密钥
+            },
+            amapConfig: {
+                mapStyle: 'amap://styles/whitesmoke'
+            }
+        });
+
+        // 添加 AMap Layer 到地图
+        amapLayer.addTo(map, [39.9042, 116.4074], 11).catch(error => {
+            console.error('添加 AMap Layer 失败:', error);
+            alert('请检查您的高德地图 API Key 是否有效');
+        });
+
+        // 控制功能
+        let isVisible = true;
+        let currentOpacity = 1;
+        let currentZIndex = 100;
+
+        // 切换显示/隐藏
+        document.getElementById('toggleVisible').addEventListener('click', function () {
+            isVisible = !isVisible;
+            amapLayer.setVisible(isVisible);
+            this.textContent = isVisible ? '隐藏' : '显示';
+        });
+
+        // 改变地图样式
+        document.getElementById('mapStyle').addEventListener('change', function () {
+            console.log('地图样式已更改为:', this.value);
+            amapLayer.setMapStyle(this.value);
+        });
+
+        // 监听地图移动，同步 AMap
+        map.on('moveend zoomend', function () {
+            // AMap Layer 会自动同步，这里可以添加额外的处理逻辑
+        });
+    </script>
+</body>
+
+</html>
